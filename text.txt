@@ -1,0 +1,968 @@
+// Express.js = Backend
+// React = Frontend
+// MongoDB Atlas = Database
+
+
+// ✅ Node.js Setup
+// ✅ Express Install
+// ✅ MongoDB Install
+// ✅ MongoDB Connection
+// ✅ First Backend Server
+// ✅ Express setup
+// ✅ MongoDB connection
+// ✅ User Model
+// ✅ bcryptjs install
+
+
+
+// How to Register User Registration
+
+// http://localhost:5000/api/auth/register  -> post
+
+// body:{
+//   "name": "Sumayya kahtoon",
+//   "email": "sumayyakhatoon046@gmail.com",
+//   "password": "123456"
+// }
+
+response Me yeh Aayega 
+{
+    "message": "User Registered Successfully",
+    "user": {
+        "name": "Sumayya kahtoon",
+        "email": "sumayyakhatoon046@gmail.com",
+        "password": "$2b$10$7P06iwhC31LLb3SURByXleLldDypAZX/CH2LaASgSuEomTKmodI6a",
+        "role": "student",
+        "enrolledCourses": [],
+        "_id": "6a3be4c7d4aed582af0c0a82",
+        "__v": 0
+    }
+}
+
+✅ Express server setup
+✅ MongoDB connection
+✅ User Schema/Model
+✅ Register API
+✅ Password Hashing with bcrypt
+✅ Postman testing
+✅ MongoDB Compass connect ho gaya
+✅ lms database create ho gaya
+✅ users collection ban gayi
+✅ Register API se user successfully save ho gaya
+
+
+
+Login API + JWT Authentication
+
+Isme hum banayenge:
+
+User email se search hoga
+Password verify hoga (bcrypt.compare)
+JWT token generate hoga
+User ko token milega
+
+
+How to login 
+
+http://localhost:5000/api/auth/login -> post
+
+// body:
+
+
+Response:
+{
+    "message": "Login Successful",
+    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2JlNDkyZDRhZWQ1ODJhZjBjMGE4MCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzgyMzEwNzA0LCJleHAiOjE3ODI5MTU1MDR9.MdzK-5Df5RUgL59qhF-Sbi-2elik6vi6f4Pgy2faab0"
+}
+
+
+✅ User Registration API
+✅ Password Hashing (bcrypt)
+✅ MongoDB User Storage
+✅ Login API
+✅ JWT Token Generation
+
+
+Jo token mila hai uska matlab:
+eyJhbGciOiJIUzI1Ni...
+Ye JWT Token hai.
+Isme user ki information encoded hai:
+
+
+Course Management System 🎓
+
+Features:
+
+Teacher:
+
+Add Course
+Update Course
+Delete Course
+
+Student:
+
+View Courses
+Enroll Course
+
+
+Adding Courses
+
+http://localhost:5000/api/courses  -> post
+
+body:
+{
+  "title": "Data Structures and Algorithms",
+  "description": "Learn Arrays, Linked List, Trees and Graphs",
+  "instructor": "Sumayya",
+  "category": "Programming"
+}
+
+Response:
+{
+    "message": "Course Added Successfully",
+    "course": {
+        "title": "Data Structures and Algorithms",
+        "description": "Learn Arrays, Linked List, Trees and Graphs",
+        "instructor": "Sumayya khatoon",
+        "category": "Programming",
+        "_id": "6a3bea1fd4aed582af0c0a83",
+        "createdAt": "2026-06-24T14:30:55.875Z",
+        "__v": 0
+    }
+}
+
+Student course ko add nahi karsakta sirf teacher and admin karsakta hai
+Agar Aap tecaher ka Token Authorization me add kiya tho course add hojayega 
+
+
+Students se Course add karke Token teacher rhaya tho student se bhi add hojayega dinied nahi Aayega  Aaisa nahi hona chahiye
+
+Student ka course add nahi hona kato token bhi student ka hona chahiye agar teacher ka hoga tho student se bhi add hojayega
+
+teacher Token and Techer login course=course Added
+teacher Token and Student login course=course Added
+Student Token and Student login course=course Not Added
+Student Token and Teacher login course=course Not Added
+
+
+Get all the courses
+
+http://localhost:5000/api/courses -> get 
+
+jo jo course add kare hai vo response me Aayengge
+
+{
+    "success": true,
+    "courses": [
+        {
+            "_id": "6a3bea1fd4aed582af0c0a83",
+            "title": "Data Structures and Algorithms",
+            "description": "Learn Arrays, Linked List, Trees and Graphs",
+            "instructor": "Sumayya khatoon",
+            "category": "Programming",
+            "createdAt": "2026-06-24T14:30:55.875Z",
+            "__v": 0
+        },
+        {
+            "_id": "6a3bf0fed4aed582af0c0a86",
+            "title": "DBMS",
+            "description": "Learn SQL and Database Concepts",
+            "instructor": "Sumayya khatoon",
+            "category": "Database",
+            "createdAt": "2026-06-24T15:00:14.165Z",
+            "__v": 0
+        }
+    ]
+}
+
+Complete Flow
+Postman
+   ↓
+index.js
+   ↓
+courseRoutes.js
+   ↓
+courseController.js
+   ↓
+Course Model
+   ↓
+MongoDB
+   ↓
+courseController.js
+   ↓
+Postman Response
+
+nterview me agar pooche:
+
+"Course add karne par request kaise process hoti hai?"
+
+Answer:
+
+Client (Postman/React) sends request
+→ Route receives request
+→ Controller handles business logic
+→ Model interacts with MongoDB
+→ Data gets stored
+→ Response is returned to client
+
+✅ Register API
+✅ Login API
+✅ JWT Token
+✅ Add Course API
+✅ Get All Courses API
+
+complete kar liya hai.
+
+Get the single course by using their _id
+
+http://localhost:5000/api/courses/6a3bf0fed4aed582af0c0a86 -> get
+
+Response 
+{
+    "_id": "6a3bf0fed4aed582af0c0a86",
+    "title": "DBMS",
+    "description": "Learn SQL and Database Concepts",
+    "instructor": "Sumayya khatoon",
+    "category": "Database",
+    "createdAt": "2026-06-24T15:00:14.165Z",
+    "__v": 0
+}
+
+
+Update the course using _id
+
+http://localhost:5000/api/courses/6a3bf0fed4aed582af0c0a86 -> put
+
+body:
+{
+  "title": "DataBase Management System"
+}
+
+Response: Title has change dbms to DataBase Management System
+
+{
+    "message": "Course Updated Successfully",
+    "updatedCourse": {
+        "_id": "6a3bf0fed4aed582af0c0a86",
+        "title": "DataBase Management System",
+        "description": "Learn SQL and Database Concepts",
+        "instructor": "Sumayya khatoon",
+        "category": "Database",
+        "createdAt": "2026-06-24T15:00:14.165Z",
+        "__v": 0
+    }
+}
+
+✅ Create Course (POST)
+✅ Get All Courses (GET)
+✅ Get Single Course (GET /:id)
+🔄 Update Course (PUT)
+⏳ Delete Course (DELETE)
+
+
+✅ Register API
+✅ Login API
+✅ JWT Token
+✅ Add Course API
+✅ Get All Courses API
+✅ Get Course By ID API
+✅ Update Course API
+
+
+Course Delete using id
+
+http://localhost:5000/api/courses/6a3bf0fed4aed582af0c0a86
+
+Response
+{
+    "message": "Course Deleted Successfully"
+}
+
+
+Enroll Course 
+http://localhost:5000/api/courses/enroll
+
+body
+{
+    "userId": "6a3be4c7d4aed582af0c0a82",
+    "courseId": "6a3bea1fd4aed582af0c0a83"
+}      
+
+Response
+
+{
+    "message": "Course Enrolled Successfully",
+    "user": {
+        "_id": "6a3be4c7d4aed582af0c0a82",
+        "name": "Sumayya khatoon",
+        "email": "sumayyakhatoon046@gmail.com",
+        "password": "$2b$10$7P06iwhC31LLb3SURByXleLldDypAZX/CH2LaASgSuEomTKmodI6a",
+        "role": "teacher",
+        "enrolledCourses": [
+            "6a3c0f452a32b00aff830673",
+            "6a3bea1fd4aed582af0c0a83"
+        ],
+        "__v": 2
+    }
+}
+
+
+Authentication
+
+✅ Register User
+✅ Login User
+✅ Password Hashing (bcrypt)
+✅ JWT Token
+
+Course Management
+
+✅ Add Course
+✅ Get All Courses
+✅ Get Single Course
+✅ Update Course
+✅ Delete Course
+
+Enrollment
+
+✅ Enroll Student in Course
+
+
+
+Without Token can we add course or Not
+
+http://localhost:5000/api/courses-> post
+
+Body:
+{
+  "title": "React JS",
+  "description": "Frontend Development",
+  "instructor": "Sumayya",
+  "category": "Programming"
+}
+
+Response:
+
+{
+    "message": "Token not found"
+}
+
+
+✅ Register User
+✅ Login User
+✅ Password Hashing (bcrypt)
+✅ JWT Token
+
+✅ Add Course
+✅ Get All Courses
+✅ Get Single Course
+✅ Update Course
+✅ Delete Course
+
+✅ Enroll Student in Course
+
+✅ Auth Middleware
+✅ Protected Routes
+
+Enrollment
+
+✅ Student Enroll in Course
+✅ My Courses API (populate use karke)
+
+
+Adding lectures in a course
+
+http://localhost:5000/api/lectures/6a3bea1fd4aed582af0c0a83 -> post
+
+Body:
+{
+    "title": "Introduction to Node JS",
+    "videoUrl": "https://youtube.com/example"
+}
+
+Response:
+{
+    "message": "Lecture Added Successfully",
+    "lecture": {
+        "title": "Introduction to Node JS",
+        "videoUrl": "https://youtube.com/example",
+        "course": "6a3bea1fd4aed582af0c0a83",
+        "_id": "6a3c1c3e2a32b00aff830675",
+        "createdAt": "2026-06-24T18:04:46.343Z",
+        "updatedAt": "2026-06-24T18:04:46.343Z",
+        "__v": 0
+    }
+}
+
+Lecture Management
+
+✅ Add Lecture
+
+Get All lectures of a Course
+
+http://localhost:5000/api/lectures/6a3bea1fd4aed582af0c0a83 -> get
+
+Response
+{
+    "success": true,
+    "lectures": [
+        {
+            "_id": "6a3c1c3e2a32b00aff830675",
+            "title": "Introduction to Node JS",
+            "videoUrl": "https://youtube.com/example",
+            "course": "6a3bea1fd4aed582af0c0a83",
+            "createdAt": "2026-06-24T18:04:46.343Z",
+            "updatedAt": "2026-06-24T18:04:46.343Z",
+            "__v": 0
+        }
+    ]
+}
+
+Delete Lecture API 🗑️
+
+http://localhost:5000/api/lectures/6a3c1c3e2a32b00aff830675 -> Delete (lecture id )
+
+Delete ke liye hamesha lecture ka _id use karte hain:
+
+Body:
+{
+    "title": "Introduction to Node JS",
+    "videoUrl": "https://youtube.com/example"
+}
+
+Response:
+{
+    "message": "Lecture Deleted Successfully"
+}
+
+
+Update the lecture
+
+http://localhost:5000/api/lectures/6a3c1f4c2a32b00aff830678 -> put (lecture id )
+
+body:
+{
+    "title": "Advanced Node JS",
+    "videoUrl": "https://youtube.com/new-video"
+}
+
+Response:
+{
+    "message": "Lecture Updated Successfully",
+    "lecture": {
+        "_id": "6a3c1f4c2a32b00aff830678",
+        "title": "Advanced Node JS",
+        "videoUrl": "https://youtube.com/new-video",
+        "course": "6a3bea1fd4aed582af0c0a83",
+        "createdAt": "2026-06-24T18:17:48.228Z",
+        "updatedAt": "2026-06-25T12:31:03.568Z",
+        "__v": 0
+    }
+}
+
+Lecture Module
+
+✅ Add Lecture
+✅ Get Lectures
+✅ Update Lecture
+✅ Delete Lecture
+
+
+Next Module: Progress Tracking 📈
+
+http://localhost:5000/api/progress/complete -> post
+
+body:
+{}
+
+Response:
+{ 
+    "message": "Progress API Working" 
+} 
+
+lecture marked Complete or not 
+
+http://localhost:5000/api/progress/complete -> post
+
+body:
+{
+    "courseId": "6a3bea1fd4aed582af0c0a83",
+    "lectureId": "6a3c1f262a32b00aff830676"
+}
+
+Response:
+{
+    "message": "Lecture Marked Complete",
+    "progress": {
+        "user": "6a3be492d4aed582af0c0a80",
+        "course": "6a3bea1fd4aed582af0c0a83",
+        "completedLectures": [
+            "6a3c1f262a32b00aff830676"
+        ],
+        "_id": "6a3d23564bf443e9748f4140",
+        "__v": 1
+    }
+}
+
+Get Course Progress API
+example{
+    "totalLectures": 5,
+    "completedLectures": 2,
+    "progress": 40
+}
+
+http://localhost:5000/api/progress/6a3c0f452a32b00aff830673 -> get (course id)
+
+Body tab par jao
+none select karo
+raw JSON hata do
+
+Response:
+{
+    "success": true,
+    "progress": {
+        "_id": "6a3d27ea26f46943cf9a86aa",
+        "user": "6a3be492d4aed582af0c0a80",
+        "course": "6a3c0f452a32b00aff830673",
+        "completedLectures": [
+            "6a3c1f262a32b00aff830676"
+        ],
+        "__v": 1
+    }
+}
+
+✅ Student identify ho gaya
+✅ Course identify ho gaya
+✅ Completed lecture save ho gaya
+✅ Progress fetch bhi ho raha hai
+
+Progress
+
+✅ Mark Lecture Complete
+✅ Get Course Progress
+
+Quiz testing (quiz create)
+
+http://localhost:5000/api/quizzes -> post 
+
+body:
+{
+  "course": "6a3bea1fd4aed582af0c0a83",
+  "title": "DSA Quiz 1",
+  "questions": [
+    {
+      "question": "What is the time complexity of Binary Search?",
+      "options": [
+        "O(n)",
+        "O(log n)",
+        "O(n log n)",
+        "O(1)"
+      ],
+      "correctAnswer": "O(log n)"
+    }
+  ]
+}
+
+Response:
+{
+    "message": "Quiz Created Successfully",
+    "quiz": {
+        "course": "6a3bea1fd4aed582af0c0a83",
+        "title": "DSA Quiz 1",
+        "questions": [
+            {
+                "question": "What is the time complexity of Binary Search?",
+                "options": [
+                    "O(n)",
+                    "O(log n)",
+                    "O(n log n)",
+                    "O(1)"
+                ],
+                "correctAnswer": "O(log n)",
+                "_id": "6a3d30894a28656a0cfe205e"
+            }
+        ],
+        "_id": "6a3d30894a28656a0cfe205d",
+        "createdAt": "2026-06-25T13:43:37.850Z",
+        "updatedAt": "2026-06-25T13:43:37.850Z",
+        "__v": 0
+    }
+}
+
+
+Get All Quizzes API
+
+http://localhost:5000/api/quizzes -> get
+
+body:
+{
+  "course": "6a3bea1fd4aed582af0c0a83",
+  "title": "DSA Quiz 1",
+  "questions": [
+    {
+      "question": "What is the time complexity of Binary Search?",
+      "options": [
+        "O(n)",
+        "O(log n)",
+        "O(n log n)",
+        "O(1)"
+      ],
+      "correctAnswer": "O(log n)"
+    }
+  ]
+}
+
+Response:
+{
+    "success": true,
+    "quizzes": [
+        {
+            "_id": "6a3d30404a28656a0cfe205b",
+            "course": "6a3bea1fd4aed582af0c0a83",
+            "title": "DSA Quiz 1",
+            "questions": [
+                {
+                    "question": "What is the time complexity of Binary Search?",
+                    "options": [
+                        "O(n)",
+                        "O(log n)",
+                        "O(n log n)",
+                        "O(1)"
+                    ],
+                    "correctAnswer": "O(log n)",
+                    "_id": "6a3d30404a28656a0cfe205c"
+                }
+            ],
+            "createdAt": "2026-06-25T13:42:24.588Z",
+            "updatedAt": "2026-06-25T13:42:24.588Z",
+            "__v": 0
+        }
+    ]
+}
+
+Get Single Quiz API
+
+http://localhost:5000/api/quizzes/6a3d30404a28656a0cfe205b -> get (quiz id)
+
+body:
+{
+  "course": "6a3bea1fd4aed582af0c0a83",
+  "title": "DSA Quiz 1",
+  "questions": [
+    {
+      "question": "What is the time complexity of Binary Search?",
+      "options": [
+        "O(n)",
+        "O(log n)",
+        "O(n log n)",
+        "O(1)"
+      ],
+      "correctAnswer": "O(log n)"
+    }
+  ]
+}
+
+Response:
+{
+    "_id": "6a3d30404a28656a0cfe205b",
+    "course": "6a3bea1fd4aed582af0c0a83",
+    "title": "DSA Quiz 1",
+    "questions": [
+        {
+            "question": "What is the time complexity of Binary Search?",
+            "options": [
+                "O(n)",
+                "O(log n)",
+                "O(n log n)",
+                "O(1)"
+            ],
+            "correctAnswer": "O(log n)",
+            "_id": "6a3d30404a28656a0cfe205c"
+        }
+    ],
+    "createdAt": "2026-06-25T13:42:24.588Z",
+    "updatedAt": "2026-06-25T13:42:24.588Z",
+    "__v": 0
+}
+
+✅ Quiz ID se quiz fetch ho raha hai
+✅ Course ID aa raha hai
+✅ Questions aa rahe hain
+✅ Options aa rahe hain
+✅ Correct answer bhi aa raha hai
+
+Quiz Module Status
+
+✅ Create Quiz
+✅ Get All Quizzes
+✅ Get Single Quiz
+⬜ Update Quiz
+⬜ Delete Quiz
+⬜ Submit Quiz
+⬜ Calculate Score
+
+
+Update Quiz API
+http://localhost:5000/api/quizzes/6a3d30404a28656a0cfe205b -> put (quiz id)
+
+body:
+{
+    "title": "DSA Quiz Updated"
+}
+
+Response:
+{
+    "message": "Quiz Updated Successfully",
+    "quiz": {
+        "_id": "6a3d30404a28656a0cfe205b",
+        "course": "6a3bea1fd4aed582af0c0a83",
+        "title": "DSA Quiz Updated",
+        "questions": [
+          
+        ],
+        "createdAt": "2026-06-25T13:42:24.588Z",
+        "updatedAt": "2026-06-25T14:07:46.759Z",
+        "__v": 0
+    }
+}
+
+✅ Teacher update kar sakta hai
+✅ Admin update kar sakta hai
+✅ Student update nahi kar sakta
+✅ Role Middleware properly work kar raha hai
+
+Delete Quiz API 🗑️
+
+http://localhost:5000/api/quizzes/6a3d30404a28656a0cfe205b -> DELETE (quiz id)
+
+body:
+{
+  "name": "Sumayya kahtoon",
+  "email": "sumayyakhatoon046@gmail.com",
+  "password": "123456"
+}
+
+Response:
+{
+    "message": "Quiz Deleted Successfully"
+}
+
+✅ Create Quiz (Teacher/Admin)
+✅ Get All Quizzes
+✅ Get Single Quiz
+✅ Update Quiz (Teacher/Admin only)
+✅ Delete Quiz (Teacher/Admin only)
+
+
+Student Quiz Attempt System 🎯 
+Student quiz dekhega.
+Student answers submit karega.
+Backend correct answers check karega.
+Score calculate hoga.
+Result save hoga.
+
+SUbmit the Quizzes 2222222222222
+
+http://localhost:5000/api/quizzes/submit -> post 
+
+body:
+{
+    "quizId": "6a3e1deb919ed04dfdcba818",
+    "answers": [
+        {
+            "questionId": "6a3e1deb919ed04dfdcba819",
+            "answer": "Queue"
+        }
+    ]
+}
+
+Response:
+{
+    "message": "Quiz Submitted Successfully",
+    "score": 1,
+    "totalQuestions": 1,
+    "percentage": 100
+}
+
+✅ Create Quiz
+✅ Get All Quizzes
+✅ Get Single Quiz
+✅ Update Quiz
+✅ Delete Quiz
+✅ Student Submit Quiz
+✅ Score Calculation
+✅ Result Save (QuizResult collection)
+
+
+Get Quiz Result API 📊
+
+http://localhost:5000/api/quizzes/results -> get
+
+body:
+none
+
+Response:
+{
+    "success": true,
+    "results": [
+        {
+            "_id": "6a3e1ec1919ed04dfdcba81b",
+            "user": "6a3be492d4aed582af0c0a80",
+            "quiz": {
+                "_id": "6a3e1deb919ed04dfdcba818",
+                "course": "6a3bea1fd4aed582af0c0a83",
+                "title": "DSA Quiz 2",
+            }
+        }
+    ]
+} habhi long hai mai Deletekardiya
+
+
+Teacher View Student Quiz Results API 📊
+
+Abhi:
+Student apna result dekh sakta hai ✅ (getMyResults)
+Ab teacher ko bhi chahiye:
+Kaunse student ne quiz diya?
+Kitna score aaya?
+Kis quiz ka result hai?
+
+
+http://localhost:5000/api/quizzes/all-results -> get 
+
+body:
+none
+
+Response:
+{
+    "success": true,
+    "results": [
+        {
+            "student": "Sumayya",
+            "email": "sumayyakhatoon091@gmail.com",
+            "quiz": "DSA Quiz 2",
+            "score": 1,
+            "totalQuestions": 1,
+            "percentage": 100
+        }
+    ]
+}
+
+✅ Create Quiz (Teacher/Admin)
+✅ Get All Quizzes
+✅ Get Single Quiz
+✅ Update Quiz
+✅ Delete Quiz
+✅ Student Submit Quiz
+✅ Calculate Score
+✅ Save Quiz Result
+✅ Student View Own Result
+✅ Teacher View All Student Results
+
+
+student Dashboard
+
+http://localhost:5000/api/users/dashboard -> get 
+
+body:
+none
+
+Response:
+{
+    "success": true,
+    "dashboard": {
+        "name": "Sumayya",
+        "email": "sumayyakhatoon091@gmail.com",
+        "courses": [
+            {
+                "course": "DBMS",
+                "totalLectures": 2,
+                "completedLectures": 1,
+                "progressPercentage": 50
+            },
+            {
+                "course": "Data Structures and Algorithms",
+                "totalLectures": 1,
+                "completedLectures": 1,
+                "progressPercentage": 100
+            }
+        ],
+        "quizResults": [
+            {
+                "quiz": "DSA Quiz 2",
+                "score": 1,
+                "totalQuestions": 1,
+                "percentage": 100
+            }
+        ]
+    }
+}
+
+Certificate generate kare 🎓
+
+http://localhost:5000/api/certificates/generate/6a3bea1fd4aed582af0c0a83 -> post (course id)
+
+body:
+none
+
+Response:
+{
+    "message": "Certificate Generated Successfully",
+    "certificate": {
+        "student": "Sumayya",
+        "course": "6a3bea1fd4aed582af0c0a83",
+        "certificateId": "CERT-1782461781459",
+        "issuedAt": "2026-06-26T08:16:21.462Z"
+    }
+} 
+
+#### My Certificates API test karna.###3
+
+http://localhost:5000/api/certificates/my-certificates -> get
+
+body:
+none
+
+Response:
+{
+    "success": true,
+    "certificates": [
+        {
+            "course": "Data Structures and Algorithms",
+            "certificateId": "CERT-1782461656915",
+            "issuedAt": "2026-06-26T08:14:16.919Z"
+        },
+        {
+            "course": "Data Structures and Algorithms",
+            "certificateId": "CERT-1782461781459",
+            "issuedAt": "2026-06-26T08:16:21.462Z"
+        }
+    ]
+}
+
+
+Duplicate Certificate Prevention #############
+Kyunki abhi same course ka certificate 2 baar generate ho sakta hai. Real LMS me ye nahi hona chahiye.
+
+Flow:
+
+Student generate kare
+Pehle check hoga certificate already hai ya nahi
+Agar hai → "Certificate Already Exists"
+Nahi hai → create
+
+
+http://localhost:5000/api/certificates/generate/6a3bea1fd4aed582af0c0a83 -> post 
+
+body:
+none
+
+Response:
+{
+    "message": "Certificate Already Generated"
+}
+
+
+✅ Generate Certificate
+✅ Check 100% course completion
+✅ Prevent duplicate certificate
+✅ Get My Certificates (clean response)

@@ -1,0 +1,27 @@
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2JlNGM3ZDRhZWQ1ODJhZjBjMGE4MiIsInJvbGUiOiJ0ZWFjaGVyIiwiaWF0IjoxNzgyMzIzMzg3LCJleHAiOjE3ODI5MjgxODd9.IvAagvWxM-JYYzJxBlMPC155YSlX8EcCLf2BD2ZlWQk
+
+Teacher
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2JlNDkyZDRhZWQ1ODJhZjBjMGE4MCIsInJvbGUiOiJzdHVkZW50IiwiaWF0IjoxNzgyMzkxMjAyLCJleHAiOjE3ODI5OTYwMDJ9._B9Zesy6ZBVmUsY8Qebnj2vaa_2drg3cOL52DFdqbFo
+
+Student
+
+{
+//   "name": "Sumayya kahtoon",
+//   "email": "sumayyakhatoon046@gmail.com",
+//   "password": "123456"
+// }
+
+{
+  "name": "Sumayya",
+  "email": "sumayyakhatoon091@gmail.com",
+  "password": "12345"
+}
+
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjZhM2JlNGM3ZDRhZWQ1ODJhZjBjMGE4MiIsInJvbGUiOiJ0ZWFjaGVyIiwiaWF0IjoxNzgyMzk0ODg0LCJleHAiOjE3ODI5OTk2ODR9.GgEpLSYlcwzHFURlgrHShdyDeXXyX0ZP22wR-yEdxxI
+
+✅ Dashboard Progress Percentage
+Certificate Generation
+Course Review & Rating
+Search & Filter Courses
+Teacher Dashboard
